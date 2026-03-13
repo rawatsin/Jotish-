@@ -2,15 +2,7 @@ import useEmployees from "../hooks/useEmployees";
 import EmployeeTable from "../components/EmployeeTable";
 
 export default function List() {
-  const { employees, loading } = useEmployees();
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p>Loading employees...</p>
-      </div>
-    );
-  }
+  const { employees, loading, loadingMore, hasMore, loadMore } = useEmployees();
 
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-6">
@@ -19,10 +11,17 @@ export default function List() {
           <h1 className="text-2xl font-bold">Employee Directory</h1>
         </div>
 
-        <EmployeeTable employees={employees} />
+        <EmployeeTable 
+          employees={employees} 
+          loading={loading}
+          loadingMore={loadingMore}
+          hasMore={hasMore}
+          loadMore={loadMore}
+        />
 
         <div className="px-6 py-4 bg-gray-50">
-          Total employees: {employees.length}
+          Total employees loaded: {employees.length}
+          {hasMore && <span className="ml-2 text-sm text-gray-500">(Scroll to load more)</span>}
         </div>
       </div>
     </div>
