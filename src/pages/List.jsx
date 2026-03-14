@@ -11,7 +11,7 @@ export default function List() {
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="text-center">
             <h1 className="text-3xl font-light text-gray-900 tracking-tight">
-              Employee Directory
+              Employee Insights Dashboard
             </h1>
             <p className="text-sm text-gray-500 mt-2">
               Manage and view employee information

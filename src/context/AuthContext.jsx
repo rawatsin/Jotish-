@@ -5,9 +5,11 @@ const AuthContext = createContext(null);
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [auditImage, setAuditImage] = useState(null);
 
   useEffect(() => {
     const storedUser = localStorage.getItem('authUser');
+    const storedAuditImage = localStorage.getItem('auditImage');
     if (storedUser) {
       try {
         setUser(JSON.parse(storedUser));
@@ -15,6 +17,9 @@ export const AuthProvider = ({ children }) => {
         console.error('Failed to parse stored user:', error);
         localStorage.removeItem('authUser');
       }
+    }
+    if (storedAuditImage) {
+      setAuditImage(storedAuditImage);
     }
     setLoading(false);
   }, []);
@@ -40,12 +45,25 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('authUser');
   };
 
+  const saveAuditImage = (imageData) => {
+    setAuditImage(imageData);
+    localStorage.setItem('auditImage', imageData);
+  };
+
+  const clearAuditImage = () => {
+    setAuditImage(null);
+    localStorage.removeItem('auditImage');
+  };
+
   const value = {
     user,
     loading,
     login,
     logout,
     isAuthenticated: !!user,
+    auditImage,
+    saveAuditImage,
+    clearAuditImage,
   };
 
   return (
