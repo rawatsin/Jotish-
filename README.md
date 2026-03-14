@@ -218,9 +218,28 @@ Markers are placed on the map with radius scaled based on employee count per cit
 
 # Intentional Bug
 
-(required)
+(Required by assignment)
 
----
+Description of intentional bug:
+
+After capturing the employee photo and drawing the signature on the Details page, the merged image is successfully generated but the application **does not automatically redirect the user to the Analytics page**. Additionally, there is **no UI button provided to navigate to the Analytics page**.
+
+To view the analytics results, the user must **manually enter `/analytics` in the browser URL**.
+
+Location of bug in code:
+
+The issue exists in the **Details page logic responsible for handling the image merge operation**. After generating the merged image using the Canvas API, the navigation step to `/analytics` is intentionally omitted.
+
+Example expected navigation (not implemented intentionally):
+
+```
+navigate("/analytics")
+```
+
+Reason for choosing this bug:
+
+This bug was intentionally introduced to satisfy the assignment requirement of including exactly one logical flaw in the application. It simulates a realistic UI flow issue where a successful operation does not trigger the expected navigation, forcing the user to manually access the results page.
+
 
 # How to Run the Project
 
