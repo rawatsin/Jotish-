@@ -3,7 +3,7 @@
 ## Live Demo
 
 Live Application (Vercel):
-[Will Paste  Vercel URL here]
+[https://jotish-self.vercel.app/]
 
 ---
 
